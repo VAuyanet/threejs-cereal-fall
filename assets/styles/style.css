@@ -1,26 +1,59 @@
+/*Base Styles*/
 html {
-  font-size: 10px;
+    font-size: 10px;
 }
+
 body {
-  margin: 0;
-  font-size: 1.6rem;
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: Arial, sans-serif;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
+/*Structure styles*/
 canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
-
 
 main {
-  height: 150rem;
+    position: relative;
+    z-index: 1;
+    height: 150rem;
 }
 
-#activateGravityBtn {
+/*Watermark*/
+.watermark {
+    background: rgb(128, 128, 128, 0.5);
+    padding: 1.5rem;
+    color: #ffffff;
+}
 
+.watermark.scrollAdvice {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+/*Gravity button*/
+#activateGravityBtn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+    padding: 1rem;
 }

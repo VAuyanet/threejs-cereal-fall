@@ -1,7 +1,8 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {rotateCereal, getNewRandomCereal, addCerealRandomPlaced} from "/assets/scripts/cerealsUseful";
 import {getRandomHEXColor} from "./useful";
+import "./domController";
 
 
 //DEFAULT VARIABLES
@@ -33,9 +34,6 @@ mainCamera.position.setZ(30);
 mainCamera.position.setX(0);
 
 renderer.render(scene, mainCamera);
-
-
-
 
 
 //CANVAS ELEMENTS
