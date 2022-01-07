@@ -1,0 +1,26 @@
+html {
+  font-size: 10px;
+}
+body {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+main {
+  height: 150rem;
+}
+
+#activateGravityBtn {
+
+}
