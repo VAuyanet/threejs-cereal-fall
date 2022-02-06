@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 // import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import {rotateCereal, getNewRandomCereal, addCerealRandomPlaced} from "/assets/scripts/cerealsUseful";
-import {getRandomHEXColor} from "./useful";
+import { rotateCereal, getNewRandomCereal, addCerealRandomPlaced } from "/assets/scripts/cerealsUseful";
+import { getRandomHEXColor } from "./useful";
 import "./domController";
 
 
