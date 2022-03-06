@@ -2,7 +2,6 @@ import * as THREE from 'three';
 // import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import { rotateCereal, getNewRandomCereal, addCerealRandomPlaced } from "/assets/scripts/cerealsUseful";
 import { getRandomHEXColor } from "./useful";
-import "./domController";
 
 
 //DEFAULT VARIABLES
@@ -30,8 +29,14 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-mainCamera.position.setZ(30);
-mainCamera.position.setX(0);
+const mainCameraDefaultPosition = {
+  "x": 0,
+  "y": 0,
+  "z": 0
+};
+mainCamera.position.setX(mainCameraDefaultPosition.x);
+mainCamera.position.setY(mainCameraDefaultPosition.y);
+mainCamera.position.setZ(mainCameraDefaultPosition.z);
 
 renderer.render(scene, mainCamera);
 
@@ -83,12 +88,39 @@ scene.add(lightHelper, gridHelper, cameraHelper);
 // controls.enableZoom = true;
 
 //EVENTS
+const activateGravityBtn = document.getElementById("activateGravityBtn");
+
+activateGravityBtn.addEventListener("click", function () {
+
+  let incrementalPosition = 0;
+  const movingYCamera = setInterval(function () {
+    mainCamera.lookAt(mainCameraDefaultPosition.x,mainCameraDefaultPosition.y,mainCameraDefaultPosition.z);
+
+    const addedPositionY = incrementalPosition / 100;
+    const addedPositionZ = incrementalPosition / 100;
+
+
+    mainCamera.position.y = mainCamera.position.y + addedPositionY;
+
+    let moveCameraZ = mainCamera.position.z - addedPositionZ;
+    if(moveCameraZ <= mainCameraDefaultPosition.z) {
+      moveCameraZ = mainCameraDefaultPosition.z;
+    }
+    mainCamera.position.z = moveCameraZ;
+
+    incrementalPosition++;
+
+    if (mainCamera.position.z <= 0) {
+      clearInterval(movingYCamera);
+    }
+  }, 45);
+});
 
 // Scroll Animation
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
 
-  mainCamera.position.z = t * -0.07;
+  mainCamera.position.z = t * -0.08;
   // mainCamera.position.x = t * -0.0002;
   // mainCamera.rotation.y = t * -0.0002;
 }
